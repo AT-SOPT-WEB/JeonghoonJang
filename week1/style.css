@@ -1,0 +1,26 @@
+h1 {
+  color: red;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  margin: 0 auto;
+  font-size: 100px;
+  background-color: #dddddd;
+}
+
+span {
+  margin: 0 auto;
+}
+
+li:first-child {
+  color: red;
+}
+
+li:nth-child(3) {
+  color: blue;
+}
