@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onClick="onClickButton()">리스트 추가하기</button>
+    <ul id="ul"></ul>
+  </body>
+
+  <script>
+    const onClickButton = () => {
+      const ul = document.getElementById("ul");
+      let result = "";
+
+      for (let num = 1; num <= 3000; num++) {
+        result += `<li>${num}</li>`;
+      }
+
+      ul.innerHTML = result;
+    };
+  </script>
+</html>
