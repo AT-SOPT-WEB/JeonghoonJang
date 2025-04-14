@@ -231,6 +231,7 @@ todosAll.addEventListener("click", () => {
   });
 });
 
+// 완료됨
 todosFinished.addEventListener("click", () => {
   const finishedTodos = todos.filter((todo) => todo.completed);
 
@@ -242,6 +243,7 @@ todosFinished.addEventListener("click", () => {
   });
 });
 
+// 미완료
 todosUnFinished.addEventListener("click", () => {
   const finishedTodos = todos.filter((todo) => !todo.completed);
 
@@ -253,6 +255,7 @@ todosUnFinished.addEventListener("click", () => {
   });
 });
 
+// 중요도
 todosPriority.addEventListener("change", (e) => {
   const selected = parseInt(e.target.value);
 
