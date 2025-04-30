@@ -233,7 +233,7 @@ todosAll.addEventListener("click", () => {
 
 // 완료됨
 todosFinished.addEventListener("click", () => {
-  const finishedTodos = todos.filter((todo) => todo.completed);
+  const finishedTodos = todos.filter(({completed}) => completed);
 
   todoList.innerHTML = "";
 
