@@ -16,7 +16,7 @@ const checkAll = document.querySelector(".check-all");
 const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector(".modal-close");
 
-function createTodo(todo) {
+function createTodo({id, priority,completed,title}) {
   const tr = document.createElement("tr");
 
   //drag & drop
