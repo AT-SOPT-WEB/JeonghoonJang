@@ -91,7 +91,7 @@ deleteBtn.addEventListener("click", () => {
     return;
   }
 
-  todos = todos.filter((todo) => !checkedIds.includes(todo.id));
+  todos = todos.filter(({id}) => !checkedIds.includes(id));
 
   localStorage.setItem("todos", JSON.stringify(todos));
 
