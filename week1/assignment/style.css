@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: blanchedalmond;
+}
+
+/* 헤더 부분 */
+header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  z-index: 1;
+}
+
+header img {
+  width: 40px;
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+header div {
+  flex: 1;
+}
+
+#first_icon {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#second_icon {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#header_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.content {
+  margin-top: 100px;
+}
+
+/* nav바 부분*/
+nav {
+  position: fixed;
+  width: 130px;
+  margin-left: 15px;
+  background-color: #dddddd;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+
+nav > div {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+nav > ul {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: solid 1px black;
+  border-radius: 10px;
+  /* overflow: hidden; */ /* 처음엔 border-radius를 각각 적용 안하고 부모요소에 숨기기로 했었는데 변경 */
+}
+
+a {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  background-color: white;
+}
+
+a[href^="#gallery"] {
+  border-radius: 10px 10px 0 0;
+}
+
+a[href^="#development"] {
+  border-radius: 0 0 10px 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 50px;
+}
+
+/* main 부분 */
+
+main {
+  margin-left: 200px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* grid 부분 */
+
+.grid_section {
+  padding: 20px;
+  background-color: white;
+}
+
+.content_grid {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+  grid-template-rows: 100px 100px 100px 100px;
+  gap: 10px;
+}
+
+.content_grid > img:nth-child(1) {
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+
+.content_grid > img:nth-child(2) {
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+
+.content_grid > img:nth-child(3) {
+  grid-column: 1/4;
+  grid-row: 3/5;
+}
+
+.content_grid > img:nth-child(4) {
+  grid-column: 3/5;
+  grid-row: 1/3;
+}
+
+.content_grid > img:nth-child(5) {
+  grid-column: 4/5;
+  grid-row: 3/5;
+}
+
+.content_grid img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 전체, 일상, 개발 */
+#gallery_section,
+#daily_section,
+#development_section {
+  padding: 20px;
+  background-color: white;
+}
+
+.content_gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* gallery item 컴포넌트 */
+.gallery_item {
+  width: 18%;
+  min-width: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  box-sizing: border-box;
+  background-color: #dddddd;
+  padding: 13px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.gallery_item:hover {
+  background-color: #bbbbbb;
+  transform: translateY(-5px);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail {
+  width: 100%;
+  height: 150px;
+}
+
+.like_icon {
+  width: 24px;
+  cursor: pointer;
+}
+
+.like_icon:hover {
+  content: url("./public/icon/heart_red.svg");
+}
+
+/* footer 부분 */
+footer {
+  background-color: white;
+  padding: 30px 15px;
+}
+
+footer > p {
+  margin: 5px;
+}
+
+/* 무한 배너 */
+
+#banner {
+  margin-bottom: 30px;
+}
+
+.banner_section {
+  overflow: hidden;
+  width: 100%;
+}
+
+.banner_track {
+  display: flex;
+  animation: rolling 6s linear infinite;
+  gap: 10px;
+  box-sizing: border-box;
+  width: max-content;
+}
+
+.banner_track > img {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+@keyframes rolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

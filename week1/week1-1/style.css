@@ -1,0 +1,41 @@
+body {
+  background-color: #dddddd;
+  margin: 10px;
+}
+
+header {
+  background-color: rgb(68, 73, 221);
+  font-size: 35px;
+  text-align: center;
+  align-items: center;
+  color: white;
+  padding: 10px;
+}
+
+section {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.content_1 {
+  width: 66%;
+  background-color: white;
+  margin: 10px;
+}
+
+.content_2 {
+  width: 33%;
+  background-color: white;
+  margin: 10px;
+}
+
+footer {
+  background-color: rgb(68, 73, 221);
+  font-size: 50px;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 10px;
+  padding: 10px;
+}
