@@ -12,7 +12,7 @@ export const Container = styled.div`
   gap: 16px;
 
   h1 {
-    font-size: 40px;
+    font-size: 20px;
   }
 `;
 

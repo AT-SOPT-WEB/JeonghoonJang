@@ -1,11 +1,7 @@
-import { useState } from "react";
-import Button from "../Button/Button";
-import { menus } from "./menu.js";
+import Button from "./Button/Button.jsx";
 import { Container, ButtonWrapper } from "./Header.style.js";
 
-const Header = () => {
-  const [selectedMenu, setSelectedMenu] = useState("github");
-
+const Header = ({ selectedMenu, setSelectedMenu, menus }) => {
   return (
     <Container>
       <h1>숫자야구 || 깃허브 검색</h1>
