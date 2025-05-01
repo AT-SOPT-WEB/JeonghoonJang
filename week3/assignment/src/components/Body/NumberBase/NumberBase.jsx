@@ -55,7 +55,7 @@ const NumberBase = ({ content }) => {
         setMessage(null);
         setRandNumber(newNum);
         console.log("3자리 숫자:", newNum);
-      }, 3000);
+      }, 5000);
     } else {
       setMessage({
         text: `${strike} 스트라이크 ${ball} 볼`,

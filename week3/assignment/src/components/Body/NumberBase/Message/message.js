@@ -1,7 +1,7 @@
 export const MESSAGE = {
   FAULT: {
     id: "fault",
-    text: "10번 실패 하였습니다. 3초 뒤 초기화됩니다.",
+    text: "10번 실패 하였습니다. 5초 뒤 초기화됩니다.",
     type: "error",
   },
   SUCCESS: {
