@@ -1,4 +1,4 @@
-import { passWdMessage } from "../constant/passwdCorrectMessage";
+import { passWdMessage } from "../constants/passwdCorrectMessage";
 
 export const getFirstPasswordError = (
   passWd: string,

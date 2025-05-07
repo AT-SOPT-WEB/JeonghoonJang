@@ -1,12 +1,12 @@
-import Button from "../components/Button";
-import InputBox from "../components/InputBox";
 import MainContainer from "../components/MainContainer";
-import PageTitle from "../components/PageTitle";
-import PageSubTitle from "../components/PageSubTitle";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { getFirstPasswordError } from "../utils/getFirstPasswordError";
 import { getIsFull } from "../utils/getIsFull";
+import CreateId from "../components/signupSteps/CreateId";
+import CreatePasswd from "../components/signupSteps/CreatePasswd";
+import CreateNickname from "../components/signupSteps/CreateNickname";
+import { SIGN_UP_STEP, type SignUpStep } from "../constants/signupStep";
 
 const SignUp = () => {
   const nav = useNavigate();
@@ -14,7 +14,7 @@ const SignUp = () => {
   const [passWd, setPassWd] = useState("");
   const [confirmPassWd, setConfirmPassWd] = useState("");
   const [nickName, setNickName] = useState("");
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState<SignUpStep>(SIGN_UP_STEP.CREATE_ID);
 
   const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -34,7 +34,14 @@ const SignUp = () => {
   };
 
   const nextStep = () => {
-    setStep((prev) => prev + 1);
+    switch (step) {
+      case SIGN_UP_STEP.CREATE_ID:
+        setStep(SIGN_UP_STEP.CREATE_PASSWD);
+        break;
+      case SIGN_UP_STEP.CREATE_PASSWD:
+        setStep(SIGN_UP_STEP.CREATE_NICKNAME);
+        break;
+    }
   };
 
   const handleAlert = () => {
@@ -62,57 +69,36 @@ const SignUp = () => {
 
   return (
     <MainContainer>
-      {step === 1 && (
-        <>
-          <PageTitle text="회원가입" />
-          <PageSubTitle text="아이디" />
-          <InputBox
-            placeholder="아이디를 입력해주세요(8~20자, 대소문자/숫자만 가능)"
-            value={id}
-            onChange={handleIdChange}
-            onKeyDown={onKeyDown}
-          />
-          <Button text="다음" isFull={isFull} onClick={nextStep} />
-        </>
+      {/* 이 부분 수정하기. 컴포넌트 따로 만들어서 ()부분 렌더링, 그리고 step도 1,2,3이 아닌 네이밍 하기 */}
+      {step === SIGN_UP_STEP.CREATE_ID && (
+        <CreateId
+          id={id}
+          onChange={handleIdChange}
+          onKeyDown={onKeyDown}
+          isFull={isFull}
+          onNext={nextStep}
+        />
       )}
-      {step === 2 && (
-        <>
-          <PageTitle text="회원가입" />
-          <PageSubTitle text="비밀번호" />
-          <InputBox
-            placeholder="비밀번호를 입력해주세요"
-            value={passWd}
-            onChange={handlePassWdChange}
-            onKeyDown={onKeyDown}
-          />
-          <InputBox
-            placeholder="비밀번호 확인"
-            value={confirmPassWd}
-            onChange={handleConfirmPassWdChange}
-            onKeyDown={onKeyDown}
-          />
-
-          {firstError && (
-            <div className="text-sm text-red-500">
-              <p>{firstError.message}</p>
-            </div>
-          )}
-
-          <Button text="다음" isFull={isFull} onClick={nextStep} />
-        </>
+      {step === SIGN_UP_STEP.CREATE_PASSWD && (
+        <CreatePasswd
+          passWd={passWd}
+          confirmPassWd={confirmPassWd}
+          onChangePassWd={handlePassWdChange}
+          onChangeConfirmPassWd={handleConfirmPassWdChange}
+          onKeyDown={onKeyDown}
+          firstError={firstError ?? null}
+          isFull={isFull}
+          onNext={nextStep}
+        />
       )}
-      {step === 3 && (
-        <>
-          <PageTitle text="회원가입" />
-          <PageSubTitle text="닉네임" />
-          <InputBox
-            placeholder="닉네임을 입력해주세요"
-            value={nickName}
-            onChange={(e) => setNickName(e.target.value)}
-            onKeyDown={onKeyDown}
-          />
-          <Button text="회원가입 하기" isFull={isFull} onClick={handleAlert} />
-        </>
+      {step === SIGN_UP_STEP.CREATE_NICKNAME && (
+        <CreateNickname
+          nickName={nickName}
+          onChange={(e) => setNickName(e.target.value)}
+          onKeyDown={onKeyDown}
+          isFull={isFull}
+          onSubmit={handleAlert}
+        />
       )}
       <div className="flex gap-1 text-xs">
         <span>이미 회원이신가요?</span>
