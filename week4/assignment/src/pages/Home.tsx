@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router";
+import MainContainer from "../components/MainContainer";
+import Button from "../components/Button";
 
 const Home = () => {
   const nav = useNavigate();
   return (
-    <div>
-      <button className="cursor-pointer" onClick={() => nav("/login")}>
-        Login으로 이동
-      </button>
-    </div>
+    <MainContainer>
+      <Button
+        text="Login으로 이동"
+        onClick={() => nav("/login")}
+        isFull={true}
+      />
+    </MainContainer>
   );
 };
 
