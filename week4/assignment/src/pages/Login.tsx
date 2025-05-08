@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import PageTitle from "../components/PageTitle";
 import { isFormFull } from "../utils/isFormFull";
+import { signin } from "../apis/auth";
 
 const Login = () => {
   const [id, setId] = useState("");
@@ -24,6 +25,20 @@ const Login = () => {
     setIsFull(isFormFull(id, value));
   };
 
+  const handleSignin = async () => {
+    try {
+      const { accessToken, userId } = await signin({
+        loginId: id,
+        password: passWd,
+      });
+      localStorage.setItem("token", accessToken);
+      localStorage.setItem("userId", String(userId));
+      window.location.href = "/mypage/info";
+    } catch (e) {
+      alert("로그인 실패! 아이디/비밀번호를 확인해주세요.");
+    }
+  };
+
   return (
     <MainContainer>
       <PageTitle text="로그인" />
@@ -33,7 +48,7 @@ const Login = () => {
         value={passWd}
         onChange={handlePasswdChange}
       />
-      <Button text="로그인" isFull={isFull} />
+      <Button text="로그인" isFull={isFull} onClick={handleSignin} />
       <button
         className="text-xs text-green-600 underline cursor-pointer"
         onClick={() => nav("/signup")}

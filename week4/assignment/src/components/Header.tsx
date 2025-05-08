@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router";
+import { useAuth } from "../contexts/AuthContext";
 import userIcon from "../assets/user-regular.svg";
 
 const Header = () => {
   const nav = useNavigate();
+  const user = useAuth();
 
   return (
     <div className="flex justify-between items-center bg-blue-500 text-white text-sm px-4 py-6">
@@ -20,7 +22,7 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-1">
         <img src={userIcon} alt="유저 아이콘" className="w-4 h-4" />
-        <div>이름</div>
+        <div>{user?.nickname || "닉네임"}</div>
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import PageSubTitle from "../../components/PageSubTitle";
 import PageTitle from "../../components/PageTitle";
 import { useState } from "react";
 
+import { updateNickname } from "../../apis/user";
+
 const UserInfo = () => {
   const [nickName, setNickName] = useState("");
   const [isFull, setIsFull] = useState(false);
@@ -14,6 +16,16 @@ const UserInfo = () => {
     const value = e.target.value;
     setNickName(value);
     setIsFull(value.trim() !== "");
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await updateNickname(nickName);
+      window.location.href = "/mypage/info";
+      alert("정보 변경 완료! 닉네임 괜찮네요.");
+    } catch (e) {
+      alert("닉네임 수정 실패 ㅜㅜ");
+    }
   };
 
   return (
@@ -27,7 +39,7 @@ const UserInfo = () => {
           value={nickName}
           onChange={handleNickNameChange}
         />
-        <Button text="저장" isFull={isFull} />
+        <Button text="저장" isFull={isFull} onClick={handleSubmit} />
       </MainContainer>
     </div>
   );

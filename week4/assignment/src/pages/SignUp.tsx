@@ -7,6 +7,7 @@ import CreateId from "../components/signupSteps/CreateId";
 import CreatePasswd from "../components/signupSteps/CreatePasswd";
 import CreateNickname from "../components/signupSteps/CreateNickname";
 import { SIGN_UP_STEP, type SignUpStep } from "../constants/signupStep";
+import { signup } from "../apis/auth";
 
 const SignUp = () => {
   const nav = useNavigate();
@@ -15,6 +16,20 @@ const SignUp = () => {
   const [confirmPassWd, setConfirmPassWd] = useState("");
   const [nickName, setNickName] = useState("");
   const [step, setStep] = useState<SignUpStep>(SIGN_UP_STEP.CREATE_ID);
+
+  const handleSignup = async () => {
+    try {
+      await signup({
+        loginId: id,
+        password: passWd,
+        nickname: nickName,
+      });
+      alert(`${nickName}님 반갑습니다! 회원가입에 성공했어요.`);
+      nav("/login");
+    } catch (error) {
+      alert("회원가입 실패.");
+    }
+  };
 
   const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -44,15 +59,10 @@ const SignUp = () => {
     }
   };
 
-  const handleAlert = () => {
-    alert(`${nickName}님 반갑습니다! 회원가입에 성공했어요.`);
-    nav("/login");
-  };
-
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && isFull) {
       if (step === 1 || step === 2) nextStep();
-      else if (step === 3) handleAlert();
+      else if (step === 3) handleSignup();
     }
   };
 
@@ -97,7 +107,7 @@ const SignUp = () => {
           onChange={(e) => setNickName(e.target.value)}
           onKeyDown={onKeyDown}
           isFull={isFull}
-          onSubmit={handleAlert}
+          onSubmit={handleSignup}
         />
       )}
       <div className="flex gap-1 text-xs">
