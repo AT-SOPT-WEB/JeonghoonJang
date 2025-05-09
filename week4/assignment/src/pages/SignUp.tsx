@@ -61,8 +61,12 @@ const SignUp = () => {
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && isFull) {
-      if (step === 1 || step === 2) nextStep();
-      else if (step === 3) handleSignup();
+      if (
+        step === SIGN_UP_STEP.CREATE_ID ||
+        step === SIGN_UP_STEP.CREATE_PASSWD
+      )
+        nextStep();
+      else if (step === SIGN_UP_STEP.CREATE_NICKNAME) handleSignup();
     }
   };
 
