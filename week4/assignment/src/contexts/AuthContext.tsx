@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     getMyProfile()
       .then((data) => {
-        console.log("getMyProfile 응답 화긴:", data);
         setUser(data);
       })
       .catch(() => {
