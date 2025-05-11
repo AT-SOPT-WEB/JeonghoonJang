@@ -18,7 +18,16 @@ const Header = () => {
         >
           SOPT 회원 조회하기
         </button>
-        <button className="cursor-pointer">로그아웃</button>
+        <button
+          className="cursor-pointer"
+          onClick={() => {
+            localStorage.removeItem("userId");
+            localStorage.removeItem("token");
+            window.location.href = "/login";
+          }}
+        >
+          로그아웃
+        </button>
       </div>
       <div className="flex items-center gap-1">
         <img src={userIcon} alt="유저 아이콘" className="w-4 h-4" />
