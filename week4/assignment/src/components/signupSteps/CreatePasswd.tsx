@@ -21,29 +21,33 @@ const CreatePasswd = ({
   firstError: { message: string } | null;
   isFull: boolean;
   onNext: () => void;
-}) => (
-  <>
-    <PageTitle text="회원가입" />
-    <PageSubTitle text="비밀번호" />
-    <InputBox
-      placeholder="비밀번호를 입력해주세요"
-      value={passWd}
-      onChange={onChangePassWd}
-      onKeyDown={onKeyDown}
-    />
-    <InputBox
-      placeholder="비밀번호 확인"
-      value={confirmPassWd}
-      onChange={onChangeConfirmPassWd}
-      onKeyDown={onKeyDown}
-    />
-    {firstError && (
-      <div className="text-sm text-red-500">
-        <p>{firstError.message}</p>
-      </div>
-    )}
-    <Button text="다음" isFull={isFull} onClick={onNext} />
-  </>
-);
+}) => {
+  return (
+    <>
+      <PageTitle text="회원가입" />
+      <PageSubTitle text="비밀번호" />
+      <InputBox
+        type="password"
+        placeholder="비밀번호를 입력해주세요"
+        value={passWd}
+        onChange={onChangePassWd}
+        onKeyDown={onKeyDown}
+      />
+      <InputBox
+        type="password"
+        placeholder="비밀번호 확인"
+        value={confirmPassWd}
+        onChange={onChangeConfirmPassWd}
+        onKeyDown={onKeyDown}
+      />
+      {firstError && (
+        <div className="text-sm text-red-500">
+          <p>{firstError.message}</p>
+        </div>
+      )}
+      <Button text="다음" isFull={isFull} onClick={onNext} />
+    </>
+  );
+};
 
 export default CreatePasswd;

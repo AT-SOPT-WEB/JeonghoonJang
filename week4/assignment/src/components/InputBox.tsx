@@ -1,4 +1,5 @@
 type InputBoxProps = {
+  type: string;
   placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -6,6 +7,7 @@ type InputBoxProps = {
 };
 
 const InputBox = ({
+  type,
   placeholder,
   value,
   onChange,
@@ -14,7 +16,7 @@ const InputBox = ({
   return (
     <div>
       <input
-        type="text"
+        type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

@@ -20,6 +20,7 @@ const CreateNickname = ({
     <PageTitle text="회원가입" />
     <PageSubTitle text="닉네임" />
     <InputBox
+      type="text"
       placeholder="닉네임을 입력해주세요"
       value={nickName}
       onChange={onChange}

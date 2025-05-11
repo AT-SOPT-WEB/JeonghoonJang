@@ -20,6 +20,7 @@ const CreateId = ({
     <PageTitle text="회원가입" />
     <PageSubTitle text="아이디" />
     <InputBox
+      type="text"
       placeholder="아이디를 입력해주세요(8~20자, 대소문자/숫자만 가능)"
       value={id}
       onChange={onChange}
