@@ -35,6 +35,7 @@ const UserInfo = () => {
         <PageTitle text="내 정보 수정하기" />
         <PageSubTitle text="새 닉네임" />
         <InputBox
+          type="text"
           placeholder="새 닉네임을 입력하세요"
           value={nickName}
           onChange={handleNickNameChange}

@@ -37,6 +37,7 @@ const UserSearch = () => {
         <PageTitle text="SOPT회원 조회하기" />
         <PageSubTitle text="닉네임" />
         <InputBox
+          type="text"
           placeholder="검색할 닉네임을 입력하세요."
           value={nickName}
           onChange={handleSearchChange}

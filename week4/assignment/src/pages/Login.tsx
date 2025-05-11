@@ -42,8 +42,14 @@ const Login = () => {
   return (
     <MainContainer>
       <PageTitle text="로그인" />
-      <InputBox placeholder="아이디" value={id} onChange={handleIdChange} />
       <InputBox
+        type="text"
+        placeholder="아이디"
+        value={id}
+        onChange={handleIdChange}
+      />
+      <InputBox
+        type="password"
         placeholder="비밀번호"
         value={passWd}
         onChange={handlePasswdChange}
